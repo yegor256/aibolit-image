@@ -3,4 +3,3 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/yegor256/total/aibolit-image/master/LICENSE.txt)
 
 This is the default Docker image for [Aibolit](https://github.com/yegor256/aibolit).
-
