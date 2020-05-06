@@ -31,10 +31,18 @@
 # If you are going to use your own container, you may remove them.
 # Rultor has no dependency on these packages.
 
-FROM ubuntu:18.04
-MAINTAINER Yegor Bugayenko <yegor256@gmail.com>
-LABEL Description="This is the default image for Aibolit" Vendor="Aibolit" Version="1.0"
-WORKDIR /tmp
+FROM python
 
-ENV DEBIAN_FRONTEND=noninteractive
+RUN git config --global user.email "docker@example.com"
+RUN git config --global user.name "Docker Dockerovich"
 
+# fetch and install Aibolit from source#
+ADD ./git_clone_and_pull_pr.sh .
+RUN chmod +x ./git_clone_and_pull_pr.sh
+RUN ./git_clone_and_pull_pr.sh
+
+RUN mkdir in
+RUN mkdir out
+
+ENTRYPOINT []
+CMD ["aibolit", "recommend",  "--folder=./in",  "--output=./out/out.xml"]
